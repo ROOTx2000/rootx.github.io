@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="程序员工具箱里面的内容主要是从 github 上找的开源代码，在线运行使用的是 Docker 运行。里面实现了很多丰富的功能，希望各位程序员喜欢。">
-<meta name="keywords" content="macOS, tips, diy">
+  <meta name="description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
+<meta name="keywords" content="macOS,ipmi,ipmitool,ITSM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员的在线工具箱 - toolfk">
-<meta property="og:url" content="http://rootx.cn/2018/1022-programmer-online-tools.html">
+<meta property="og:title" content="macOS中使用IPMI管理服务器">
+<meta property="og:url" content="http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器.html">
 <meta property="og:site_name" content="海阔天空">
-<meta property="og:description" content="程序员工具箱里面的内容主要是从 github 上找的开源代码，在线运行使用的是 Docker 运行。里面实现了很多丰富的功能，希望各位程序员喜欢。">
+<meta property="og:description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-22T09:44:51.027Z">
+<meta property="og:updated_time" content="2019-07-13T14:49:50.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序员的在线工具箱 - toolfk">
-<meta name="twitter:description" content="程序员工具箱里面的内容主要是从 github 上找的开源代码，在线运行使用的是 Docker 运行。里面实现了很多丰富的功能，希望各位程序员喜欢。">
+<meta name="twitter:title" content="macOS中使用IPMI管理服务器">
+<meta name="twitter:description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://rootx.cn/2018/1022-programmer-online-tools">
+  <link rel="canonical" href="http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>程序员的在线工具箱 - toolfk | 海阔天空</title>
+  <title>macOS中使用IPMI管理服务器 | 海阔天空</title>
   
 
 
@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rootx.cn/2018/1022-programmer-online-tools.html">
+    <link itemprop="mainEntityOfPage" href="http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ROOTx">
@@ -345,7 +345,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">程序员的在线工具箱 - toolfk
+          <h2 class="post-title" itemprop="name headline">macOS中使用IPMI管理服务器
 
               
             
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="Created: 2018-10-22 17:08:38" itemprop="dateCreated datePublished" datetime="2018-10-22T17:08:38+08:00">2018-10-22</time>
+              <time title="Created: 2019-07-13 19:30:12" itemprop="dateCreated datePublished" datetime="2019-07-13T19:30:12+08:00">2019-07-13</time>
             
 
             
@@ -392,7 +392,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/macos/" itemprop="url" rel="index"><span itemprop="name">macos</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/macOS/" itemprop="url" rel="index"><span itemprop="name">macOS</span></a></span>
 
                 
                 
@@ -411,8 +411,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2018/1022-programmer-online-tools.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/1022-programmer-online-tools.html" itemprop="commentCount"></span>
+                <a href="/2019/0713-macOS中使用IPMI管理服务器.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/0713-macOS中使用IPMI管理服务器.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -420,7 +420,7 @@
 
           
           
-            <span id="/2018/1022-programmer-online-tools.html" class="leancloud_visitors" data-flag-title="程序员的在线工具箱 - toolfk">
+            <span id="/2019/0713-macOS中使用IPMI管理服务器.html" class="leancloud_visitors" data-flag-title="macOS中使用IPMI管理服务器">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -458,15 +458,13 @@
       
 
       
-        <p>程序员工具箱里面的内容主要是从 github 上找的开源代码，在线运行使用的是 Docker 运行。里面实现了很多丰富的功能，希望各位程序员喜欢。</p>
+        <p>IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。</p>
+<p>ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少见。</p>
+<p>本文主要讲述如何在macOS系统里安装常用的IPMI工具。</p>
 <a id="more"></a>
-
-<p>包含下面 25 个功能：</p>
-<p>PHP 代码在线运行，<br>PHP 混淆、加密、解密<br>Python 代码在线运行<br>JavaScript 在线运行<br>HTML 在线工具箱<br>JavaScript 在线工具箱<br>CSS 在线工具箱<br>JSON 在线工具箱<br>Unixtime 时间戳转换<br>Base64/URL/Native2Ascii 转换<br>CSV 转换工具箱<br>XML 在线工具箱<br>WebSocket 在线工具<br>Markdown 在线工具箱<br>Htaccess2nginx 转换<br>进制在线转换<br>在线加密工具箱<br>在线伪原创工具<br>在线 APK 反编译<br>在线网页截图工具<br>在线随机密码生成<br>在线生成二维码 Qrcode<br>在线 Crontab 表达式生成<br>在线短网址生成<br>在线计算器工具</p>
-<p>程序员工具箱网址：toolfk.com</p>
-<hr>
-<p>原文链接：MACGG</p>
-
+<h1 id="一、IPMI简介"><a href="#一、IPMI简介" class="headerlink" title="一、IPMI简介"></a>一、IPMI简介</h1><h2 id="1-1-IPMI标准"><a href="#1-1-IPMI标准" class="headerlink" title="1.1 IPMI标准"></a>1.1 IPMI标准</h2><p>IPMI是智能型平台管理接口（Intelligent Platform Management Interface）的缩写，该标准由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势在于它是独立于主机的CPU BIOS 和 OS 的，所以用户无论在开机还是关机的状态下，只要接通电源就可以实现对服务器的监控。</p>
+<h2 id="1-2-ipmitool"><a href="#1-2-ipmitool" class="headerlink" title="1.2 ipmitool"></a>1.2 ipmitool</h2><p>ipmitool 是一种可用在 linux 系统下的命令行方式的 ipmi 平台管理工具，它支持 ipmi 1.5 规范（最新的规范为 ipmi 2.0），通过它可以实现获取传感器的信息、显示系统日志内容、网络远程开关机等功能。</p>
+<h3 id="1-3-IPMI-View"><a href="#1-3-IPMI-View" class="headerlink" title="1.3 IPMI View"></a>1.3 IPMI View</h3><h1 id="二、macOS中的IPMI工具"><a href="#二、macOS中的IPMI工具" class="headerlink" title="二、macOS中的IPMI工具"></a>二、macOS中的IPMI工具</h1><h2 id="2-1-ipmitool"><a href="#2-1-ipmitool" class="headerlink" title="2.1 ipmitool"></a>2.1 ipmitool</h2><h2 id="2-2-IPMI-View"><a href="#2-2-IPMI-View" class="headerlink" title="2.2 IPMI View"></a>2.2 IPMI View</h2>
       
     </div>
 
@@ -500,7 +498,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://rootx.cn/2018/1022-programmer-online-tools.html" title="程序员的在线工具箱 - toolfk">http://rootx.cn/2018/1022-programmer-online-tools.html</a>
+    <a href="http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器.html" title="macOS中使用IPMI管理服务器">http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -513,11 +511,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DIY/" rel="tag"><i class="fa fa-tag"></i> DIY</a>
-          
             <a href="/tags/macOS/" rel="tag"><i class="fa fa-tag"></i> macOS</a>
           
-            <a href="/tags/tips/" rel="tag"><i class="fa fa-tag"></i> tips</a>
+            <a href="/tags/ITSM/" rel="tag"><i class="fa fa-tag"></i> ITSM</a>
           
         </div>
       
@@ -530,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/macos-tips.html" rel="next" title="macOS Tips">
-                <i class="fa fa-chevron-left"></i> macOS Tips
+              <a href="/2019/0627-lizhi.html" rel="next" title="致敬李志">
+                <i class="fa fa-chevron-left"></i> 致敬李志
               </a>
             
           </div>
@@ -539,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/0326-Mac下的酷炫屏保：Brooklyn.html" rel="prev" title="Mac下的酷炫屏保：Brooklyn">
-                Mac下的酷炫屏保：Brooklyn <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -727,6 +728,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、IPMI简介"><span class="nav-number">1.</span> <span class="nav-text">一、IPMI简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-IPMI标准"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 IPMI标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-ipmitool"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 ipmitool</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-IPMI-View"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.3 IPMI View</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、macOS中的IPMI工具"><span class="nav-number">2.</span> <span class="nav-text">二、macOS中的IPMI工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-ipmitool"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 ipmitool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-IPMI-View"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 IPMI View</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
