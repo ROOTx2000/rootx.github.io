@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
-<meta name="keywords" content="macOS,ipmi,ipmitool,ITSM">
+<meta name="keywords" content="macOS,ipmi,ipmitool,Homebrew,brew,ITSM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS中使用IPMI管理服务器">
 <meta property="og:url" content="http://rootx.cn/2019/0713-macOS中使用IPMI管理服务器.html">
 <meta property="og:site_name" content="海阔天空">
 <meta property="og:description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-13T14:49:50.599Z">
+<meta property="og:updated_time" content="2019-07-14T08:10:41.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS中使用IPMI管理服务器">
 <meta name="twitter:description" content="IPMI是由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定的IT设施管理标准。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势是无需开机、只要接通电源就可以实现对服务器的监控。 ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少">
@@ -462,9 +462,73 @@
 <p>ipmitool 是一个在linux系统下的命令行方式的 ipmi 平台管理工具，也是IPMI使用最为广泛的工具。但是，在macOS下的资料非常少见。</p>
 <p>本文主要讲述如何在macOS系统里安装常用的IPMI工具。</p>
 <a id="more"></a>
-<h1 id="一、IPMI简介"><a href="#一、IPMI简介" class="headerlink" title="一、IPMI简介"></a>一、IPMI简介</h1><h2 id="1-1-IPMI标准"><a href="#1-1-IPMI标准" class="headerlink" title="1.1 IPMI标准"></a>1.1 IPMI标准</h2><p>IPMI是智能型平台管理接口（Intelligent Platform Management Interface）的缩写，该标准由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势在于它是独立于主机的CPU BIOS 和 OS 的，所以用户无论在开机还是关机的状态下，只要接通电源就可以实现对服务器的监控。</p>
-<h2 id="1-2-ipmitool"><a href="#1-2-ipmitool" class="headerlink" title="1.2 ipmitool"></a>1.2 ipmitool</h2><p>ipmitool 是一种可用在 linux 系统下的命令行方式的 ipmi 平台管理工具，它支持 ipmi 1.5 规范（最新的规范为 ipmi 2.0），通过它可以实现获取传感器的信息、显示系统日志内容、网络远程开关机等功能。</p>
-<h3 id="1-3-IPMI-View"><a href="#1-3-IPMI-View" class="headerlink" title="1.3 IPMI View"></a>1.3 IPMI View</h3><h1 id="二、macOS中的IPMI工具"><a href="#二、macOS中的IPMI工具" class="headerlink" title="二、macOS中的IPMI工具"></a>二、macOS中的IPMI工具</h1><h2 id="2-1-ipmitool"><a href="#2-1-ipmitool" class="headerlink" title="2.1 ipmitool"></a>2.1 ipmitool</h2><h2 id="2-2-IPMI-View"><a href="#2-2-IPMI-View" class="headerlink" title="2.2 IPMI View"></a>2.2 IPMI View</h2>
+<h1 id="一、IPMI-简介"><a href="#一、IPMI-简介" class="headerlink" title="一、IPMI 简介"></a>一、IPMI 简介</h1><h2 id="1-1-IPMI标准"><a href="#1-1-IPMI标准" class="headerlink" title="1.1 IPMI标准"></a>1.1 IPMI标准</h2><p>IPMI是智能型平台管理接口（Intelligent Platform Management Interface）的缩写，该标准由英特尔、惠普、NEC、美国戴尔电脑和SuperMicro等公司制定。用户可以利用IPMI监视服务器的物理健康特征，如温度、电压、风扇工作状态、电源状态等。IPMI最大的优势在于它是独立于主机的CPU BIOS 和 OS 的，所以用户无论在开机还是关机的状态下，只要接通电源就可以实现对服务器的监控。</p>
+<h1 id="二、ipmitool"><a href="#二、ipmitool" class="headerlink" title="二、ipmitool"></a>二、ipmitool</h1><p>ipmitool 是一种可用在 linux 系统下的命令行方式的 ipmi 平台管理工具，它支持 ipmi 1.5 规范（最新的规范为 ipmi 2.0），通过它可以实现获取传感器的信息、显示系统日志内容、网络远程开关机等功能。</p>
+<h1 id="三、-IPMI-Utilities-by-Supermicro-超微公司提供的系列工具"><a href="#三、-IPMI-Utilities-by-Supermicro-超微公司提供的系列工具" class="headerlink" title="三、 IPMI Utilities by Supermicro(超微公司提供的系列工具)"></a>三、 IPMI Utilities by Supermicro(超微公司提供的系列工具)</h1><h2 id="3-1-Supermicro公司简介"><a href="#3-1-Supermicro公司简介" class="headerlink" title="3.1 Supermicro公司简介"></a>3.1 Supermicro公司简介</h2><blockquote>
+<p>科技成功的关键是设计一个公司，被一群热爱并致力于工作的人环绕。</p>
+</blockquote>
+<p>Supermicro® （美国超微电脑股份有限公司）创立于 1993 年，总部位于美国加州圣何塞（San Jose）,在台湾和荷兰设立子公司。</p>
+<blockquote>
+<p>公司简介：<a href="https://www.supermicro.org.cn/zh_cn/about" target="_blank" rel="noopener">https://www.supermicro.org.cn/zh_cn/about</a></p>
+</blockquote>
+<p>Supermicro® 的模组化构建式服务器解决方案（Building Block Solutions®）以丰富的模组化、可互相相容元件为基础，以高效节能、优化应用、最佳运算等解决方案，可构建一个不受扩充限制的架构。此架构产品线包括服务器、刀片、GPU 系统、工作站、主板、机箱、电源供应器、存储技术、网路解决方案、服务器管理软件与 SuperRack® 机柜/配件。</p>
+<p>扩展阅读：“间谍芯片门”</p>
+<blockquote>
+<p>Supermicro® 的创始人CEO为台裔，且在大陆、台湾都设有工厂，雇佣了大量有华裔血统和面孔的员工。也正是如此，超微成了中美贸易战前夕“间谍芯片门”的牺牲品。2018年末，有美国媒体爆出大料，宣称中国军方通过“假冒甲方”、“贿赂中间环节”的方式，将“铅笔芯”大小的微型间谍芯片，偷偷插在了美国Supermicro公司在华代工厂的主板上，从而为其渗透美国、获取情报开了无数极其隐蔽的“后门”。当然，事后也证明这是无稽之谈。</p>
+</blockquote>
+<h2 id="3-2-IPMI-工具集"><a href="#3-2-IPMI-工具集" class="headerlink" title="3.2 IPMI 工具集"></a>3.2 IPMI 工具集</h2><p>IPMI是一个公开并且免费的标准，并得到了Intel、HP、DELL等公司的支持。但是，在IPMI相关技术的应用方面，超微是做得最接地气的厂商，没有之一。<br>超微的服务器产品都提供了对IPMI的支持，并且，最值得赞赏的是，超微还提供了一系列配套的IPMI工具集，成为最佳的IPMI践行者。</p>
+<p>这些工具，包括命令行、GUI，支持多种操作系统，包括DOS、Windows、Linux，甚至还有Android、iOS，其覆盖面之广，全球找不出第2家。</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>OS</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IPMICFG</td>
+<td>DOS Windows Linux</td>
+<td>IPMICFG is an in-band utility for configuring IPMI devices.</td>
+</tr>
+<tr>
+<td>SMCIPMITool</td>
+<td>Linux Windows</td>
+<td>SMCIPMITool is an out-of-band Supermicro utility that allows a user to interface with SuperBlade® systems and IPMI devices via CLI (Command Line Interface).</td>
+</tr>
+<tr>
+<td>IPMIView</td>
+<td>Linux Windows</td>
+<td>IPMIView is a GUI-based software application that allows administrators to manage multiple target systems through BMC.</td>
+</tr>
+<tr>
+<td>IPMIView</td>
+<td>Android</td>
+<td><a href="https://play.google.com/store/apps/details?id=com.smc.smcipmitool" target="_blank" rel="noopener">Available on Google Play</a></td>
+</tr>
+<tr>
+<td>IPMIView</td>
+<td>iOS</td>
+<td><a href="https://apps.apple.com/cn/app/supermicro-ipmiview/id952163566" target="_blank" rel="noopener">Available on Apple App Store</a></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>详细的介绍，请参阅官方链接，在此不做赘述：<a href="https://www.supsermicro.org.cn/solutions/SMS_IPMI.cfm" target="_blank" rel="noopener">https://www.supsermicro.org.cn/solutions/SMS_IPMI.cfm</a></p>
+</blockquote>
+<h1 id="四、macOS中的IPMI工具"><a href="#四、macOS中的IPMI工具" class="headerlink" title="四、macOS中的IPMI工具"></a>四、macOS中的IPMI工具</h1><p>上面介绍的工具，都没有macOS的版本。虽然某些提供了源码，可自行编译，但终究不太友好。这里，重点介绍下在macOS中该如何获取这些工具。</p>
+<h2 id="4-1-ipmitool"><a href="#4-1-ipmitool" class="headerlink" title="4.1 ipmitool"></a>4.1 ipmitool</h2><p>ipmitool是用得最多的命令行工具。其实，macOS下也可以通过Homebrew工具方便的安装ipmitool。</p>
+<h3 id="4-1-1-安装brew"><a href="#4-1-1-安装brew" class="headerlink" title="4.1.1 安装brew"></a>4.1.1 安装brew</h3><p>首先要安装brew工具：<br>【Homebrew (un)installer】<a href="https://github.com/Homebrew/install" target="_blank" rel="noopener">https://github.com/Homebrew/install</a><br>Install Homebrew<br>/usr/bin/ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</a><br>More installation information and options at <a href="https://docs.brew.sh/Installation.html" target="_blank" rel="noopener">https://docs.brew.sh/Installation.html</a>.</p>
+<p>如果在旧版本macOS中安装过brew，在升级到新版本macOS后，由于macOS的安全机制做了升级，会出现某些目录permission denied的情况。<br>这时候需要卸载Homebrew，并重新安装。</p>
+<blockquote>
+<p>注意：卸载可能导致原来使用brew工具安装的其它功能受损，例如git…，这些工具也需要重新安装！</p>
+</blockquote>
+<p>Uninstall Homebrew<br>/usr/bin/ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</a><br>Download the uninstall script and run ./uninstall –help to view more uninstall options.</p>
+<h3 id="4-1-2-安装ipmitool"><a href="#4-1-2-安装ipmitool" class="headerlink" title="4.1.2 安装ipmitool"></a>4.1.2 安装ipmitool</h3><p>Run:<br>brew install ipmitool<br>Done! You can now use ipmitool.</p>
+<h2 id="4-2-IPMI-View"><a href="#4-2-IPMI-View" class="headerlink" title="4.2 IPMI View"></a>4.2 IPMI View</h2><p>【IPMIView (java) App wrapper for MacOS】 <a href="https://github.com/TheCase/IPMIView.app" target="_blank" rel="noopener">https://github.com/TheCase/IPMIView.app</a></p>
+<p>Download the latest IPMIView software from SuperMicro:</p>
+<p><a href="ftp://ftp.supermicro.com/utility/IPMIView/Linux/" target="_blank" rel="noopener">ftp://ftp.supermicro.com/utility/IPMIView/Linux/</a></p>
+<p>git clone <a href="https://github.com/TheCase/IPMIView.app" target="_blank" rel="noopener">https://github.com/TheCase/IPMIView.app</a><br>cd IPMIView.app<br>mkdir -p Resources/IPMIView<br>tar -zxvf ~/Downloads/IPMIView*.tar.gz –strip=1 -C ./Resources/IPMIView/.<br>cd ..<br>cp -R IPMIView.app ~/Applications</p>
+
       
     </div>
 
@@ -513,7 +577,7 @@
           
             <a href="/tags/macOS/" rel="tag"><i class="fa fa-tag"></i> macOS</a>
           
-            <a href="/tags/ITSM/" rel="tag"><i class="fa fa-tag"></i> ITSM</a>
+            <a href="/tags/tools/" rel="tag"><i class="fa fa-tag"></i> tools</a>
           
         </div>
       
@@ -739,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、IPMI简介"><span class="nav-number">1.</span> <span class="nav-text">一、IPMI简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-IPMI标准"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 IPMI标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-ipmitool"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 ipmitool</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-IPMI-View"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.3 IPMI View</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、macOS中的IPMI工具"><span class="nav-number">2.</span> <span class="nav-text">二、macOS中的IPMI工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-ipmitool"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 ipmitool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-IPMI-View"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 IPMI View</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、IPMI-简介"><span class="nav-number">1.</span> <span class="nav-text">一、IPMI 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-IPMI标准"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 IPMI标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、ipmitool"><span class="nav-number">2.</span> <span class="nav-text">二、ipmitool</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-IPMI-Utilities-by-Supermicro-超微公司提供的系列工具"><span class="nav-number">3.</span> <span class="nav-text">三、 IPMI Utilities by Supermicro(超微公司提供的系列工具)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Supermicro公司简介"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Supermicro公司简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-IPMI-工具集"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 IPMI 工具集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、macOS中的IPMI工具"><span class="nav-number">4.</span> <span class="nav-text">四、macOS中的IPMI工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-ipmitool"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 ipmitool</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-安装brew"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 安装brew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-安装ipmitool"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 安装ipmitool</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-IPMI-View"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 IPMI View</span></a></li></ol></li></ol></div>
             
 
           </div>
